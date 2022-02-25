@@ -1,4 +1,4 @@
-#How to Run
+# How to Run
 
 1. Start mq and ldap using the following command:
 
@@ -10,13 +10,13 @@ start-docker.cmd
 4. Go to localhost:8070 and login using users/passwords defined in docker-compose.yml for ldap service.
 5. Start camunda process by clicking on corresponding buttons.
 
-##Workflow
+## Workflow
 
 MqVaadin UI sends messages to MQ broker to "command queue",
 mq listener in Camunda wait these messages, sends it to camunda engine to start a process.
 Processes inside camunda, use "data queue" to send the data between stages.
 
-##Useful links
+## Useful links
 
 1. http://localhost:8070/ - vaadin application, user01/password1 or user02/password2.
 2. https://localhost:9443/ - IBM MQ Admin application, admin/passw0rd.
