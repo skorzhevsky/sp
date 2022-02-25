@@ -1,0 +1,49 @@
+version : '3'
+
+services:
+  mq:
+    image: ibmcom/mq:9
+    container_name: sk-mq
+    environment:
+      LICENSE: accept
+      MQ_QMGR_NAME: QM1
+    ports:
+      - 1414:1414
+      - 9443:9443
+
+  ldap:
+    image: bitnami/openldap
+    container_name: sk-ldap
+    environment:
+      LDAP_ADMIN_USERNAME: admin
+      LDAP_ADMIN_PASSWORD: admin
+      BITNAMI_DEBUG: "true"
+      LDAP_USERS: user01,user02
+      LDAP_PASSWORDS: password1,password2      
+    ports:
+      - 1389:1389
+      - 1636:1636
+    # volumes:
+    #   - C:\MyData\Spring-workshop\project\ldifs:/ldifs      
+    #   - C:\MyData\Spring-workshop\project\schema\custom.ldif:/schema/custom.ldif
+
+#   mysql:
+#     image: mysql:latest
+#     container_name: sk-mysql
+#     ports:
+#       - 3306:3306    
+#     environment:
+# #      MYSQL_PASSWORD: root
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_DATABASE: state
+
+#   phpmyadmin:
+#     image: phpmyadmin/phpmyadmin
+#     container_name: sk-pma
+#     environment:
+#       PMA_HOST: mysql
+#       PMA_PORT: 3306
+#       PMA_ARBITRARY: 1
+#     restart: always
+#     ports:
+#       - 8183:80
